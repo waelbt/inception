@@ -45,7 +45,11 @@ services:
   nginx:
     depends_on:
       - wordpress
-    build: ./requirements/nginx/
+    build: 
+      context: ./requirements/nginx/
+      args:
+        KEY_PATH: ${KEY_PATH}
+        CERT_PATH: ${CERT_PATH}
     container_name: nginx
     restart: always
     ports:
